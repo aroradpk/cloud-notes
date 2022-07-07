@@ -1,0 +1,9 @@
+.btn-nav{
+    border : 1px solid #F8F9D7;
+    color : #F8F9D7;
+  }
+  .btn-nav:hover{
+    background-color: #F8F9D7;
+    color : #6E85B7;
+    border : 1px solid #F8F9D7;
+  }

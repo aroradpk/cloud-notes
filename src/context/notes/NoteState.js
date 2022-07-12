@@ -32,7 +32,7 @@ const NoteState = (props) => {
         'Content-Type': 'application/json',
         'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJjMmQ3NDEwNTBjNDdlMjU2ZDllN2U3In0sImlhdCI6MTY1NzAzMjAzMX0.w2su6bRnY9WvKwNPSQU9NmX3ApUz1__o6dN0Gnx3M2Q'
       },
-      body: JSON.stringify(title, description, tag)
+      body: JSON.stringify({title, description, tag})
     });
 
     console.log("Adding a new note")
@@ -49,7 +49,18 @@ const NoteState = (props) => {
   }
 
   //Delete a note
-  const deleteNote = (id) => {
+  const deleteNote = async (id) => {
+    //API call
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJjMmQ3NDEwNTBjNDdlMjU2ZDllN2U3In0sImlhdCI6MTY1NzAzMjAzMX0.w2su6bRnY9WvKwNPSQU9NmX3ApUz1__o6dN0Gnx3M2Q'
+      }
+    });
+     const json= await response.json();
+     console.log(json);
+
     console.log("Deleting the note with " + id);
     const newNotes = notes.filter((note)=> { return note._id !== id});
     setNotes(newNotes);
@@ -63,7 +74,7 @@ const NoteState = (props) => {
         'Content-Type': 'application/json',
         'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJjMmQ3NDEwNTBjNDdlMjU2ZDllN2U3In0sImlhdCI6MTY1NzAzMjAzMX0.w2su6bRnY9WvKwNPSQU9NmX3ApUz1__o6dN0Gnx3M2Q'
       },
-      body: JSON.stringify(id, title, description, tag)
+      body: JSON.stringify({id, title, description, tag})
     });
      const json= response.json();
 

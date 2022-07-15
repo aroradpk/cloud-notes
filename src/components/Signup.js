@@ -35,6 +35,7 @@ const Signup = () => {
   }
   return (
     <div className='container my-3'>
+      <h3 className='my-2'>Create an account to use CloudNotes</h3>
       <form onSubmit={submitHandler}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Full Name</label>

@@ -33,6 +33,7 @@ const Login = () => {
     }
     return (
         <div className='container my-3'>
+            <h3>Please Login to use CloudNotes</h3>
             <form onSubmit={submitHandler}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>

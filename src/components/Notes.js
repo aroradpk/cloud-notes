@@ -3,15 +3,22 @@ import NoteContext from '../context/notes/NoteContext';
 import AddNote from './AddNote';
 import NoteItem from './NoteItem';
 import {AlertContext} from '../context/notes/NoteContext';
+import {useNavigate} from 'react-router-dom'
 
 const Notes = () => {
      const noteUpdateContext = useContext(AlertContext);
     const { showAlert } = noteUpdateContext;
     const context = useContext(NoteContext);
     const { notes, getNotes, editNote } = context;
+    let navigate = useNavigate();
     useEffect(() => {
-        getNotes();
-    }, [])
+        if (localStorage.getItem('token')){
+            getNotes();
+        } else {
+            navigate("/login");
+            showAlert("Please Login", "danger")
+        }
+    })
     
     const displayModal = useRef(null);
     const closeModal = useRef(null);
